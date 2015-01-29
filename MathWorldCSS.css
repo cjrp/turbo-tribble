@@ -1,0 +1,41 @@
+﻿#myHeader {
+    text-align:center;
+    font-family:Calibri;
+}
+
+#siteHeader{
+    text-align:center;
+    font-family:Calibri;
+}
+
+#usernameForm {
+    text-align:center;
+   }
+
+/*#mainDivBox{
+    visibility:visible;
+}*/
+
+.InputBlock {
+    display:block;
+    margin:15px;
+    cursor:pointer;
+}
+
+#choicesBox {
+    display:inline-block;
+    float:left;
+}
+
+#questionsBox {
+    display:none;
+    float:left;
+    margin-left:25px;
+    margin-right:25px;
+}
+
+.additionInputBlock {
+    display:none;
+    margin:15px;
+    visibility:hidden;
+}

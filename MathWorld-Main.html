@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>MathWorld</title>
+    <link rel="stylesheet" type="text/css" href="MathWorldCSS.css" />
+    <script src="MathWorldJS.js"></script>
+</head>
+<body>
+    <div id="mainDivBox" style="display: block">
+        <h1 id="myHeader">Welcome!</h1>
+        <h2 id="siteHeader">This site helps to improve your math skills</h2>
+        <div id="usernameForm">
+            <p>Please input your name below:</p>
+            <p>First Name:</p>
+            <input id="firstname" type="text" name="firstName" />
+            <br />
+            <p>Last Name: </p>
+            <input id="lastname" type="text" name="lastName" />
+            <br />
+            <br />
+            <input type="button" value="Submit" onclick="toggleDiv()" />
+        </div>
+    </div>
+    <div id="secondDivBox" style="display: none">
+        <div id="choicesBox">
+            <p>These are four categories that you can work on:</p>
+            <div id="optionsBox">
+                <input type="button" value="Addition" class="InputBlock" onclick="onClickAddition()" />
+                <input type="button" value="Subtraction" class="InputBlock" />
+                <input type="button" value="Multiplication" class="InputBlock" />
+                <input type="button" value="Division" class="InputBlock" />
+            </div>
+        </div>
+        <div id="additionOptionsBox">
+            <input type="button" value="Single Digit" class="additionInputBlock" />
+            <input type="button" value="Double Digit" class="additionInputBlock" />
+            <input type="button" value="Three Digit" class="additionInputBlock" />
+            <input type="button" value="Decimal Values" class="additionInputBlock" />
+        </div>
+        <div id="questionsBox">
+            <h3>Here you go!!</h3>
+            <label id="firstNumberLabel"></label>
+            <label id ="plusSign">+</label>
+            <label id ="secondNumberLabel"></label>
+            <label id="equalSign">=</label>
+            <input id="addAnswer" type="text" onkeydown="pressEnter()" /> 
+            <input id="endButton" type="button" value="End" onclick="onClickingEnd()"/>           
+        </div>
+    </div>
+</body>
+</html>
