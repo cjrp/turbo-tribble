@@ -40,51 +40,55 @@ function onClickAddition() {
     //{
     //    x.getElementsByClassName("additionInputBlock")[i].style.display = "block";
     //}
+    questionsCount = 0;
+    correctAnswer = 0;
+    wrongAnswer = 0;
+    document.getElementById("finalResultsBox").style.display = "none";
+    questionDisplay();
+}
 
+function questionDisplay() {
     var firstNumber = Math.floor(Math.random() * 10);
     var secondNumber = Math.floor(Math.random() * 10);
     document.getElementById("firstNumberLabel").innerHTML = firstNumber;
     document.getElementById("secondNumberLabel").innerHTML = secondNumber;
+    var textBox = document.getElementById("addAnswer");
+    textBox.value = "";
+    textBox.focus();
+    questionsCount++;
 }
 
+//Setting global parameters to calculate the correct and wrong answer
+var correctAnswer = 0;
+var wrongAnswer = 0;
+var questionsCount = 0;
+
+
+//Function when clicking on enter key
 function pressEnter() {
     if (event.keyCode == 13) {
         var firstNumber = parseInt(document.getElementById("firstNumberLabel").innerHTML);
         var secondNumber = parseInt(document.getElementById("secondNumberLabel").innerHTML);
         if (parseInt(document.getElementById("addAnswer").value) === (firstNumber + secondNumber)) {
-            alert("correct");
+            correctAnswer++;
         }
         else {
-            alert("wrong");
+            wrongAnswer++;
+        }
+        if (questionsCount < 20) {
+            questionDisplay();
+        }
+        else {
+            publishingAdditionResults();
+
         }
     }
-    //if (event.keyCode == 13) {
-    //    var countOfQuestions = 1;
-    //    var correctAnswer = 0;
-    //    var wrongAnswer = 0;
+   }
 
-    //    while (countOfQuestions < 5) {
-    //        var firstNumber = Math.floor(Math.random() * 10);
-    //        var secondNumber = Math.floor(Math.random() * 10);
-    //        document.getElementById("firstNumberLabel").innerHTML = firstNumber;
-    //        document.getElementById("secondNumberLabel").innerHTML = secondNumber;
-            
-    //        if (document.getElementById("addAnswer").value === (firstNumber + secondNumber)) {
-    //            correctAnswer++;
-    //        }
-    //        else {
-    //            wrongAnswer++;
-    //        }
-    //        document.getElementById("addAnswer").value = "";
-    //        countOfQuestions++;
-    //    }
-    //}
-    //return correctAnswer;
-}
-
-function onClickingEnd() {
-    var correctAnswersNumber = pressEnter();
-    alert("You have" + correctAnswersNumber + "correct");
+function publishingAdditionResults() {
+    document.getElementById("questionsBox").style.display = "none";
+    document.getElementById("finalResultsBox").style.display = "block";
+    document.getElementById("resultsSummary").innerHTML = "Total number of quetions : 20 --> You have got " +correctAnswer + " " + "correct, You have got " +wrongAnswer + " " + "wrong;";   
 }
 
 onload = changeTextColor;
