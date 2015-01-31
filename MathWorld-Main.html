@@ -17,10 +17,10 @@
             <input id="firstname" type="text" name="firstName" />
             <br />
             <p>Last Name: </p>
-            <input id="lastname" type="text" name="lastName" />
+            <input id="lastname" type="text" name="lastName" onkeydown="if (event.keyCode == 13) document.getElementById('submitButton').click()" />
             <br />
             <br />
-            <input type="button" value="Submit" onclick="toggleDiv()" />
+            <input id="submitButton" type="button" value="Submit" onclick="toggleDiv()"/>
         </div>
     </div>
     <div id="secondDivBox" style="display: none">

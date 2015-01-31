@@ -25,9 +25,10 @@ function toggleDiv() {
     //var fname = document.getElementById("firstname").value;
     //var lname = document.getElementById("lastName").value;
     //var userName = fname + lname;
-    if (document.getElementById("mainDivBox").style.display == "block") {
-        document.getElementById("mainDivBox").style.display = "none";
-        document.getElementById("secondDivBox").style.display = "block";
+          if (document.getElementById("mainDivBox").style.display == "block") {
+            document.getElementById("mainDivBox").style.display = "none";
+            document.getElementById("secondDivBox").style.display = "block";
+        
     }
 }
 
