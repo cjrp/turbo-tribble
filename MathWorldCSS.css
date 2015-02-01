@@ -35,9 +35,9 @@
 }
 
 .additionInputBlock {
-    display:none;
+    display:block;
     margin:15px;
-    visibility:hidden;
+    /* visibility:hidden; */
 }
 
 #finalResultsBox {
