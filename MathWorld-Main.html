@@ -33,13 +33,13 @@
                 <input type="button" value="Division" class="InputBlock" />
             </div>
         </div>
-        <div id="additionOptionsBox">
-            <input type="button" value="Single Digit" class="additionInputBlock" />
-            <input type="button" value="Double Digit" class="additionInputBlock" />
-            <input type="button" value="Three Digit" class="additionInputBlock" />
-            <input type="button" value="Decimal Values" class="additionInputBlock" />
+        <div id="questionsChoiceBox" style="display: none; float: left">
+            <input type="button" value="Single Digit" class="additionInputBlock" onclick="setChoiceAndStart(this)"/>
+            <input type="button" value="Double Digit" class="additionInputBlock" onclick="setChoiceAndStart(this)"/>
+            <input type="button" value="Triple Digit" class="additionInputBlock" onclick="setChoiceAndStart(this)"/>
+            <input type="button" value="Decimal Values" class="additionInputBlock" onclick="setChoiceAndStart(this)"/>
         </div>
-        <div id="questionsBox">
+        <div id="questionsBox" style="display: none; float: left">
             <h3>Here you go!!</h3>
             <label id="firstNumberLabel"></label>
             <label id ="plusSign">+</label>

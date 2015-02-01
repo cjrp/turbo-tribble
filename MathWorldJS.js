@@ -34,23 +34,60 @@ function toggleDiv() {
 
 //OnClick: Addition Button
 function onClickAddition() {
-    document.getElementById("questionsBox").style.display = "block";
-    //var list = document.getElementById("additionOptionsBox");
-    //var length = document.getElementsByClassName("additionInputBlock").length;
-    //for (var i = 0; i < length; i++)
-    //{
-    //    x.getElementsByClassName("additionInputBlock")[i].style.display = "block";
-    //}
     questionsCount = 0;
     correctAnswer = 0;
     wrongAnswer = 0;
     document.getElementById("finalResultsBox").style.display = "none";
-    questionDisplay();
+    displayQuestionChoices();
+}
+
+function displayQuestionChoices() {
+	var choices = document.getElementById("questionsChoiceBox");
+	choices.style.display = "block";
+}
+
+var minValue;
+var maxValue;
+var denominator;
+function setChoiceAndStart(control) {
+
+	document.getElementById("questionsChoiceBox").style.display = "none";
+
+	switch(control.value)
+	{
+	case "Single Digit":
+		minValue = 0;
+		maxValue = 9;
+		denominator = 1;
+		break;
+	case "Double Digit":
+		minValue = 0;
+		maxValue = 99;
+		denominator = 1;
+		break;
+	case "Triple Digit":
+		minValue = 0;
+		maxValue = 999;
+		denominator = 1;
+		break;
+	case "Decimal Values":
+		minValue = 0;
+		maxValue = 9999;
+		denominator = 100;
+		break;
+	default:
+		minValue = 0;
+		maxValue = 9;
+		denominator = 1;
+	}
+	
+	document.getElementById("questionsBox").style.display = "block";
+	questionDisplay();
 }
 
 function questionDisplay() {
-    var firstNumber = Math.floor(Math.random() * 10);
-    var secondNumber = Math.floor(Math.random() * 10);
+    var firstNumber = (minValue + Math.floor(Math.random() * maxValue)) / denominator;
+    var secondNumber = (minValue + Math.floor(Math.random() * maxValue)) / denominator;
     document.getElementById("firstNumberLabel").innerHTML = firstNumber;
     document.getElementById("secondNumberLabel").innerHTML = secondNumber;
     var textBox = document.getElementById("addAnswer");
