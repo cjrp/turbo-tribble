@@ -51,6 +51,11 @@ function onClickAddition() {
     questionDisplay();
 }
 
+//Function on click subtraction
+function onClickSubtraction() {
+
+}
+
 function questionDisplay() {
     var firstNumber = Math.floor(Math.random() * 10);
     var secondNumber = Math.floor(Math.random() * 10);
@@ -60,6 +65,10 @@ function questionDisplay() {
     textBox.value = "";
     textBox.focus();
     questionsCount++;
+    //TODO:
+    //Second digit , three digit and decimal questions
+    //var first2DigitNumber = math.floor(math.random() * 90 + 10);
+    //var second2DigitNumber = Math.floor(math.random() * 90 + 10);
 }
 
 //Setting global parameters to calculate the correct and wrong answer
