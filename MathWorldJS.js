@@ -31,7 +31,9 @@ function toggleDiv() {
         
     }
 }
-
+//Global variables for calculating time taken for the user to respond
+var startTime = 0;
+var endTime = 0;
 //OnClick: Addition Button
 function onClickAddition() {
     questionsCount = 0;
@@ -83,6 +85,8 @@ function setChoiceAndStart(control) {
 	
 	document.getElementById("questionsBox").style.display = "block";
 	questionDisplay();
+    startTime = new Date().getTime();
+    questionDisplay();
 }
 
 function questionDisplay() {
@@ -113,10 +117,11 @@ function pressEnter() {
         else {
             wrongAnswer++;
         }
-        if (questionsCount < 20) {
+        if (questionsCount <= 20) {
             questionDisplay();
         }
         else {
+            endTime = new Date().getTime();
             publishingAdditionResults();
 
         }
@@ -126,7 +131,8 @@ function pressEnter() {
 function publishingAdditionResults() {
     document.getElementById("questionsBox").style.display = "none";
     document.getElementById("finalResultsBox").style.display = "block";
-    document.getElementById("resultsSummary").innerHTML = "Total number of quetions : 20 --> You have got " +correctAnswer + " " + "correct, You have got " +wrongAnswer + " " + "wrong;";   
+    var finalMinutes = (endTime - startTime)/1000;
+    document.getElementById("resultsSummary").innerHTML = "Total number of quetions : 20 --> You have got " +correctAnswer + " " + "correct, You have got " +wrongAnswer + " " + "wrong. It took " +finalMinutes + " " + "seconds to solve";   
 }
 
 onload = changeTextColor;
