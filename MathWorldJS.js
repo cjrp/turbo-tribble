@@ -34,13 +34,37 @@ function toggleDiv() {
 //Global variables for calculating time taken for the user to respond
 var startTime = 0;
 var endTime = 0;
-//OnClick: Addition Button
-function onClickAddition() {
+
+
+function onClickOperator(control)
+{
+    document.getElementById("finalResultsBox").style.display = "none";
     questionsCount = 0;
     correctAnswer = 0;
     wrongAnswer = 0;
-    document.getElementById("finalResultsBox").style.display = "none";
-    displayQuestionChoices();
+
+    switch (control.value)
+    {
+        case "Addition":
+            displayQuestionChoices();
+            document.getElementById("sign").innerHTML = "+";
+            break;
+        case "Subtraction":
+            displayQuestionChoices();
+            document.getElementById("sign").innerHTML = "-";
+            break;
+        case "Multiplication":
+            displayQuestionChoices();
+            document.getElementById("sign").innerHTML = "*";
+            break;
+        case "Division":
+            displayQuestionChoices();
+            document.getElementById("sign").innerHTML = "/";
+            break;
+        default:
+            displayQuestionChoices();
+            document.getElementById("sign").innerHTML = "+";
+    }
 }
 
 function displayQuestionChoices() {
@@ -89,10 +113,6 @@ function setChoiceAndStart(control) {
     questionDisplay();
 }
 
-//Function on click subtraction
-function onClickSubtraction() {
-
-}
 
 function questionDisplay() {
     var firstNumber = (minValue + Math.floor(Math.random() * maxValue)) / denominator;
@@ -103,11 +123,7 @@ function questionDisplay() {
     textBox.value = "";
     textBox.focus();
     questionsCount++;
-    //TODO:
-    //Second digit , three digit and decimal questions
-    //var first2DigitNumber = math.floor(math.random() * 90 + 10);
-    //var second2DigitNumber = Math.floor(math.random() * 90 + 10);
-}
+    }
 
 //Setting global parameters to calculate the correct and wrong answer
 var correctAnswer = 0;

@@ -27,10 +27,10 @@
         <div id="choicesBox">
             <p>These are four categories that you can work on:</p>
             <div id="optionsBox">
-                <input type="button" value="Addition" class="InputBlock" onclick="onClickAddition()" />
-                <input type="button" value="Subtraction" class="InputBlock" />
-                <input type="button" value="Multiplication" class="InputBlock" />
-                <input type="button" value="Division" class="InputBlock" />
+                <input type="button" value="Addition" class="InputBlock" onclick="onClickOperator(this)" />
+                <input type="button" value="Subtraction" class="InputBlock" onclick="onClickOperator(this)" />
+                <input type="button" value="Multiplication" class="InputBlock" onclick="onClickOperator(this)"/>
+                <input type="button" value="Division" class="InputBlock" onclick="onClickOperator(this)"/>
             </div>
         </div>
         <div id="questionsChoiceBox" style="display: none; float: left">
@@ -42,7 +42,7 @@
         <div id="questionsBox" style="display: none; float: left">
             <h3>Here you go!!</h3>
             <label id="firstNumberLabel"></label>
-            <label id ="plusSign">+</label>
+            <label id ="sign">+</label>
             <label id ="secondNumberLabel"></label>
             <label id="equalSign">=</label>
             <input id="addAnswer" type="text" onkeydown="pressEnter()" />             
