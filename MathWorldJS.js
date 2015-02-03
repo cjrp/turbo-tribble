@@ -13,28 +13,17 @@ function changeTextColor() {
     setTimeout(changeTextColor, 2000);
 };
 
-////Temporary : OnClick funtion for the submit button in the username form
-// function onClickSubmit () {
-//     var fname = document.getElementById("firstname").value;
-//     var lname = document.getElementById("lastname").value;
-//     alert(fname + lname);
-// };
-
 //OnClick Submit button from the user form - hide the mainDivBox
 function toggleDiv() {
-    //var fname = document.getElementById("firstname").value;
-    //var lname = document.getElementById("lastName").value;
-    //var userName = fname + lname;
-          if (document.getElementById("mainDivBox").style.display == "block") {
-            document.getElementById("mainDivBox").style.display = "none";
-            document.getElementById("secondDivBox").style.display = "block";
-        
+    if (document.getElementById("mainDivBox").style.display == "block") {
+        document.getElementById("mainDivBox").style.display = "none";
+        document.getElementById("secondDivBox").style.display = "block";
     }
 }
+
 //Global variables for calculating time taken for the user to respond
 var startTime = 0;
 var endTime = 0;
-
 
 function onClickOperator(control)
 {
@@ -43,28 +32,27 @@ function onClickOperator(control)
     correctAnswer = 0;
     wrongAnswer = 0;
 
+	var sign = "+";
     switch (control.value)
     {
         case "Addition":
-            displayQuestionChoices();
-            document.getElementById("sign").innerHTML = "+";
+            sign = "+";
             break;
         case "Subtraction":
-            displayQuestionChoices();
-            document.getElementById("sign").innerHTML = "-";
+            sign = "-";
             break;
         case "Multiplication":
-            displayQuestionChoices();
-            document.getElementById("sign").innerHTML = "*";
+            sign = "*";
             break;
         case "Division":
-            displayQuestionChoices();
-            document.getElementById("sign").innerHTML = "/";
+            sign = "/";
             break;
         default:
-            displayQuestionChoices();
-            document.getElementById("sign").innerHTML = "+";
+            sign = "+";
     }
+	
+	document.getElementById("sign").innerHTML = sign;
+	displayQuestionChoices();
 }
 
 function displayQuestionChoices() {
@@ -75,6 +63,7 @@ function displayQuestionChoices() {
 var minValue;
 var maxValue;
 var denominator;
+
 function setChoiceAndStart(control) {
 
 	document.getElementById("questionsChoiceBox").style.display = "none";
@@ -123,41 +112,59 @@ function questionDisplay() {
     textBox.value = "";
     textBox.focus();
     questionsCount++;
-    }
+}
 
 //Setting global parameters to calculate the correct and wrong answer
 var correctAnswer = 0;
 var wrongAnswer = 0;
 var questionsCount = 0;
 
+function getResult(number1, number2, sign) {
+	switch (sign)
+	{
+		case "+":
+			return number1 + number2;
+		case "-":
+			return number1 - number2;
+		case "*":
+			return number1 * number2;
+		case "/":
+			return number1 / number2;
+		default:
+			throw "invalid sign";
+	}
+}
 
 //Function when clicking on enter key
 function pressEnter() {
     if (event.keyCode == 13) {
         var firstNumber = parseInt(document.getElementById("firstNumberLabel").innerHTML);
         var secondNumber = parseInt(document.getElementById("secondNumberLabel").innerHTML);
-        if (parseInt(document.getElementById("addAnswer").value) === (firstNumber + secondNumber)) {
+		var sign = document.getElementById("sign").innerHTML;
+		var result = getResult(firstNumber, secondNumber, sign);		
+		
+        if (parseInt(document.getElementById("addAnswer").value) === result) {
             correctAnswer++;
         }
         else {
             wrongAnswer++;
         }
+		
         if (questionsCount <= 20) {
             questionDisplay();
         }
         else {
             endTime = new Date().getTime();
             publishingAdditionResults();
-
         }
     }
-   }
+}
 
 function publishingAdditionResults() {
     document.getElementById("questionsBox").style.display = "none";
     document.getElementById("finalResultsBox").style.display = "block";
-    var finalMinutes = (endTime - startTime)/1000;
-    document.getElementById("resultsSummary").innerHTML = "Total number of quetions : 20 --> You have got " +correctAnswer + " " + "correct, You have got " +wrongAnswer + " " + "wrong. It took " +finalMinutes + " " + "seconds to solve";   
+    var elapsedSeconds = (endTime - startTime)/1000;
+    document.getElementById("resultsSummary").innerHTML = "Total number of questions : " + (correctAnswer + wrongAnswer) + "--> You have got " + correctAnswer + " " + "correct, You have got " + wrongAnswer + " " + "wrong. It took " + elapsedSeconds + " " + "seconds to solve";   
 }
 
 onload = changeTextColor;
