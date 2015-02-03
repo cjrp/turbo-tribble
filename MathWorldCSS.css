@@ -30,8 +30,6 @@
 #questionsBox {
     display:none;
     float:left;
-    margin-left:25px;
-    margin-right:25px;
 }
 
 .additionInputBlock {
@@ -45,4 +43,29 @@
     float:left;
     margin-left:50px;
     margin-right:50px;
+}
+
+.QuestionSelectChoice {
+	margin: 10px;
+	border: 2px solid;
+	border-radius: 25px;
+}
+
+.QuestionComplexityChoice {
+	margin: 10px;
+	border: 2px solid;
+	border-radius: 25px;
+}
+
+.Question {
+	padding: 25px;
+	margin: 10px;
+	border: 2px solid;
+	border-radius: 25px;
+	font-size: 30px;
+}
+
+.AnswerText {
+	font-size: 30px;
+	text-align: center;
 }

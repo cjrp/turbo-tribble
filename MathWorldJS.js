@@ -15,9 +15,9 @@ function changeTextColor() {
 
 //OnClick Submit button from the user form - hide the mainDivBox
 function toggleDiv() {
-    if (document.getElementById("mainDivBox").style.display == "block") {
-        document.getElementById("mainDivBox").style.display = "none";
-        document.getElementById("secondDivBox").style.display = "block";
+    if (isShowingDiv("mainDivBox") == true) {
+        hideDiv("mainDivBox");
+        showDiv("secondDivBox");
     }
 }
 
@@ -25,9 +25,27 @@ function toggleDiv() {
 var startTime = 0;
 var endTime = 0;
 
+function hideDiv(elementName) {
+	document.getElementById(elementName).style.display = "none";
+}
+
+function showDiv(elementName) {
+	document.getElementById(elementName).style.display = "block";
+}
+
+function isShowingDiv(elementName) {
+	if (document.getElementById(elementName).style.display == "block")
+		return true;
+	else
+		return false;
+}
+
 function onClickOperator(control)
 {
-    document.getElementById("finalResultsBox").style.display = "none";
+	hideDiv("choicesBox");
+    hideDiv("finalResultsBox");
+	hideDiv("questionsBox");
+	 
     questionsCount = 0;
     correctAnswer = 0;
     wrongAnswer = 0;
@@ -56,8 +74,7 @@ function onClickOperator(control)
 }
 
 function displayQuestionChoices() {
-	var choices = document.getElementById("questionsChoiceBox");
-	choices.style.display = "block";
+	showDiv("questionsChoiceBox");
 }
 
 var minValue;
@@ -65,8 +82,7 @@ var maxValue;
 var denominator;
 
 function setChoiceAndStart(control) {
-
-	document.getElementById("questionsChoiceBox").style.display = "none";
+	hideDiv("questionsChoiceBox");
 
 	switch(control.value)
 	{
@@ -96,7 +112,7 @@ function setChoiceAndStart(control) {
 		denominator = 1;
 	}
 	
-	document.getElementById("questionsBox").style.display = "block";
+	showDiv("questionsBox");
 	questionDisplay();
     startTime = new Date().getTime();
     questionDisplay();
@@ -161,8 +177,8 @@ function pressEnter() {
 }
 
 function publishingAdditionResults() {
-    document.getElementById("questionsBox").style.display = "none";
-    document.getElementById("finalResultsBox").style.display = "block";
+    hideDiv("questionsBox");
+    showDiv("finalResultsBox");
     var elapsedSeconds = (endTime - startTime)/1000;
     document.getElementById("resultsSummary").innerHTML = "Total number of questions : " + (correctAnswer + wrongAnswer) + "--> You have got " + correctAnswer + " " + "correct, You have got " + wrongAnswer + " " + "wrong. It took " + elapsedSeconds + " " + "seconds to solve";   
 }

@@ -23,29 +23,29 @@
             <input id="submitButton" type="button" value="Submit" onclick="toggleDiv()"/>
         </div>
     </div>
-    <div id="secondDivBox" style="display: none">
+    <div id="secondDivBox" style="display: none" >
         <div id="choicesBox">
-            <p>These are four categories that you can work on:</p>
-            <div id="optionsBox">
+            <!-- <p>These are four categories that you can work on:</p> -->
+            <div id="optionsBox" class="QuestionSelectChoice">
                 <input type="button" value="Addition" class="InputBlock" onclick="onClickOperator(this)" />
                 <input type="button" value="Subtraction" class="InputBlock" onclick="onClickOperator(this)" />
                 <input type="button" value="Multiplication" class="InputBlock" onclick="onClickOperator(this)"/>
                 <input type="button" value="Division" class="InputBlock" onclick="onClickOperator(this)"/>
             </div>
         </div>
-        <div id="questionsChoiceBox" style="display: none; float: left">
+        <div id="questionsChoiceBox" style="display: none; float: left" class="QuestionComplexityChoice">
             <input type="button" value="Single Digit" class="additionInputBlock" onclick="setChoiceAndStart(this)"/>
             <input type="button" value="Double Digit" class="additionInputBlock" onclick="setChoiceAndStart(this)"/>
             <input type="button" value="Triple Digit" class="additionInputBlock" onclick="setChoiceAndStart(this)"/>
             <input type="button" value="Decimal Values" class="additionInputBlock" onclick="setChoiceAndStart(this)"/>
         </div>
-        <div id="questionsBox" style="display: none; float: left">
+        <div id="questionsBox" style="display: none; float: left" class="Question">
             <h3>Here you go!!</h3>
             <label id="firstNumberLabel"></label>
             <label id ="sign">+</label>
             <label id ="secondNumberLabel"></label>
             <label id="equalSign">=</label>
-            <input id="addAnswer" type="text" onkeydown="pressEnter()" />             
+            <input id="addAnswer" type="text" onkeydown="pressEnter()" class="AnswerText" />             
         </div>
         <div id="finalResultsBox">
             <p>Here is your result summary:</p>
